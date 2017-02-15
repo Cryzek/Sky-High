@@ -1,0 +1,281 @@
+/*
+	Font imports - starts here
+*/
+	@font-face {
+		src: url("../font/Pacifico.ttf");
+		font-family: "Pacifico";
+	}
+
+	@font-face {
+		src: url("../font/Gotham-Light.ttf");
+		font-family: "GothamLight";
+	}
+/*
+	Font-imports - ends here
+*/
+
+/*
+	App generic styles - starts here
+*/
+	* {
+		box-sizing: border-box;
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+
+	* [ui-sref] {
+		cursor: pointer;
+	}
+
+	body {
+		position: relative;
+		min-height: 100vh;
+		overflow-y: auto;
+		background-color: #f6f7fb;
+		padding-top: 65px !important;
+	}
+
+	input:not([type]), 
+	input[type=text], 
+	input[type=password], 
+	input[type=email], 
+	input[type=url], 
+	input[type=time], 
+	input[type=date], 
+	input[type=datetime-local], 
+	input[type=tel], 
+	input[type=number],
+	input[type=search], 
+	textarea.materialize-textarea {
+		color: black;
+		border-bottom: 1px solid #b9bdc1;
+	}
+
+	input:not([type]):focus:not([readonly]), 
+	input[type=text]:focus:not([readonly]), 
+	input[type=password]:focus:not([readonly]), 
+	input[type=email]:focus:not([readonly]), 
+	input[type=url]:focus:not([readonly]), 
+	input[type=time]:focus:not([readonly]), 
+	input[type=date]:focus:not([readonly]), 
+	input[type=datetime-local]:focus:not([readonly]), 
+	input[type=tel]:focus:not([readonly]), 
+	input[type=number]:focus:not([readonly]),
+	input[type=search]:focus:not([readonly]), 
+	textarea.materialize-textarea:focus:not([readonly]){
+		border-bottom: 1px solid #4b89fe;
+		box-shadow: 0 1px 0 0 #4b89fe;
+	}
+
+	input:not([type]):focus:not([readonly]) + label, 
+	input[type=text]:focus:not([readonly]) + label, 
+	input[type=password]:focus:not([readonly]) + label, 
+	input[type=email]:focus:not([readonly]) + label, 
+	input[type=url]:focus:not([readonly]) + label, 
+	input[type=time]:focus:not([readonly]) + label, 
+	input[type=date]:focus:not([readonly]) + label, 
+	input[type=datetime-local]:focus:not([readonly]) + label, 
+	input[type=tel]:focus:not([readonly]) + label, 
+	input[type=number]:focus:not([readonly]) + label,
+	input[type=search]:focus:not([readonly]) + label, 
+	textarea.materialize-textarea:focus:not([readonly]) + label {
+		color: #4b89fe;
+	}
+
+	.btn , .btn-large{
+		padding: 0 16px !important;
+	}
+
+	button:focus,
+	.btn , 
+	.btn-large,
+	.btn:hover, 
+	.btn-large:hover {
+		background-color: #4b89fe;
+	}
+
+	.input-field .prefix {
+		top: 50%;
+		font-size: 1.8rem;
+		color: #b9bdc1;
+		transform: translateY(-50%);
+	}
+
+	.input-field .prefix.active {
+		color: #4b89fe;
+	}
+
+	.input-field .prefix~input,
+	.input-field .prefix~label,
+	.input-field .prefix~textarea {
+		color: #b9bdc1;
+		margin-left: 3rem !important;
+	}
+
+	.input-field .prefix~input {
+		color: black;
+	}
+/*
+	App generic styles - ends here
+*/
+
+/*
+	Some helper classes - starts here
+*/
+	.flex-row {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: row;
+		        flex-direction: row;
+	}	
+
+	.flex-col {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
+	}
+
+	.flex-center-main {
+		-webkit-box-pack: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+	}
+
+	.flex-center-cross {
+		-webkit-box-align: center;
+		    -ms-flex-align: center;
+		        align-items: center;
+	}
+
+	.flex-center-both {
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		        align-items: center;
+	}
+
+	.tile {
+		background-color: white;
+		box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.06);
+	}
+/*
+	Some helper classes - ends here
+*/
+
+/*
+	Nav-menu - starts here
+*/
+	.nav-menu {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 360px;
+		height: 100vh;
+		z-index: 100;
+		background-color: #ffffff;
+		box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0);
+		-webkit-transform: translateX(-100%);
+		        transform: translateX(-100%);
+		-webkit-transition: box-shadow 0.35s,
+					-webkit-transform 0.35s;
+		transition: box-shadow 0.35s,
+					-webkit-transform 0.35s;
+		transition: transform 0.35s,
+					box-shadow 0.35s;
+		transition: transform 0.35s,
+					box-shadow 0.35s,
+					-webkit-transform 0.35s;
+	}
+
+	@media (max-width: 468px) {
+		.nav-menu {
+			width: 300px;
+		}
+	}
+
+	.nav-menu.open {
+		box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.12);
+		-webkit-transform: translateX(0);
+		        transform: translateX(0);
+	}
+
+	#nav-close-btn {
+		position: absolute;
+		top: 0;
+		right: 0px;
+		width: 65px;
+		height: 65px;
+		cursor: pointer;
+		/*padding: ;*/
+	}
+
+	#nav-close-btn > i {
+		color: #b9bdc1;
+	}
+/*
+	Nav-menu - ends here
+*/
+
+/*
+	Header - starts here
+*/	
+	header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 65px;
+		z-index: 10;
+		background-color: #ffffff;
+		box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.12);
+	}
+
+	header > div {
+		height: 100%;
+	}
+
+	header > .header-btn {
+		width: 65px;
+		cursor: pointer;
+	}
+
+	header > .header-btn > i {
+		color: #b9bdc1;
+	}
+
+	header > .site-name {
+		-webkit-box-flex: 2;
+		    -ms-flex-positive: 2;
+		        flex-grow: 2;
+		font-family: "Pacifico";
+		font-size: 1.5em;
+		color: #4b89fe;
+	}
+/*
+	Header - ends here
+*/
+
+/*
+	Main content - starts here
+*/
+	#content {
+		margin-top: 32px !important;
+		margin-bottom: 32px !important;
+	}
+
+	#content .tile-flight {
+		min-height: 120px;
+		margin: 16px 0 !important;
+	}
+/*
+	Main content - ends here
+*/

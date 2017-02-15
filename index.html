@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="sky-high">
 
 <head>
+
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sky-High Airport Arrivals</title>
+
+    <!-- App Manifest -->
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- Material Icons Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Styles -->
     <!-- Material CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <!-- Custom app styles -->
     <link async rel="stylesheet" href="./css/style.css">
-    <!-- Material Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,600,300italic,600italic" rel="stylesheet" type="text/css">
 
     <!-- Scripts -->
     <!-- jQuery -->
@@ -21,18 +28,39 @@
     <!-- Angular JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
     <!-- App js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script src="./js/app.js"></script>
+    <!-- App controller js -->
+    <script src="./controllers/appCtrl.js"></script>
 
 </head>
 
-<body>
-    <header>
-        <div class="content">
-            <h3>Arrivals</h3>
+<body class="row" ng-controller="AppController as vm">
+
+    <!-- Navbar -->
+    <div class="nav-menu flex-col flex-center-main" ng-class="{ 'open': vm.navbarOpened}">
+        <span class="flex-row flex-center-both waves-effect" id="nav-close-btn" ng-click="vm.closeNavbar()">
+            <i class="material-icons small">close</i>
+        </span>
+    </div>
+
+    <!-- Header -->
+    <header class="flex-row flex-center-both">
+        <div class="flex-row flex-center-both header-btn waves-effect" ng-click="vm.openNavbar()">
+            <i class="material-icons">menu</i>
         </div>
-    </header>
-        
-    
+        <div class="flex-row flex-center-both site-name" ng-click="vm.closeNavbar()">
+            <span ui-sref="home">Sky-High</span>
+        </div>
+        <div class="flex-row flex-center-both header-btn waves-effect" ng-click="vm.closeNavbar()">
+            <i class="material-icons">search</i>
+        </div>
+    </header>        
+
+    <!-- Content -->
+    <div class="col s12 flex-col flex-center-cross" id="content">
+        <div class="col s9 m7 tile tile-flight waves-effect">
+        </div>
+    </div>
 </body>
 
 </html>
