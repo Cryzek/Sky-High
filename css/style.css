@@ -268,14 +268,46 @@
 	Main content - starts here
 */
 	#content {
+		flex-wrap: wrap;
 		margin-top: 32px !important;
 		margin-bottom: 32px !important;
 	}
 
-	#content .tile-flight {
-		min-height: 120px;
-		margin: 16px 0 !important;
+	#content > .tile-flight {
+		width: 320px;
+		height: 180px;
+		margin: 16px 16px !important;
 	}
+
+	.tile-flight > .route-details {
+		width: 80%;
+		height: 120px;
+		justify-content: space-around;
+	}	
+
+	.tile-flight > .route-details > .from,
+	.tile-flight > .route-details > .to {
+		font-size: 1.5em;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	.tile-flight > hr {
+		width: 80%;
+		border: 1px solid #4b89fe;
+	}
+
+	.tile-flight > .time-details {
+		width: 80%;
+		height: 58px;
+		justify-content: space-between;
+	}
+
+	.tile-flight > .time-details > .time {
+		font-weight: bold;
+		font-size: 1.1em;
+	}
+
 /*
 	Main content - ends here
 */

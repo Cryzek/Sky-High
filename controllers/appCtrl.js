@@ -10,14 +10,35 @@ app.controller('AppController', function($http) {
 
 	self.closeNavbar = function() {
 		self.navbarOpened = false;
-	}
-
-	/* Arrivals */
-	self.arrivals = [];
+    }
 
 
-	self.showOfflineWarning = function() {
-		// disable the live data
+    /* Arrivals */
+    self.arrivals = [
+        {
+            source: "London",
+            destination: "California",
+            time: "8:45 AM",
+            delay: false
+        },
+        {
+            source: "Delhi",
+            destination: "Mumbai",
+            time: "8:15 AM",
+            delay: true
+        },
+        {
+            source: "Paris",
+            destination: "Madrid",
+            time: "8:25 AM",
+            delay: false
+        }
+
+    ];
+
+    /* offline helpers */
+    self.showOfflineWarning = function() {
+        // disable the live data
         document.querySelector(".arrivals-list").classList.add('loading')
             // load html template informing the user they are offline
         var request = new XMLHttpRequest();
@@ -43,14 +64,14 @@ app.controller('AppController', function($http) {
         };
 
         request.send();
-	}
+    }
 
-	self.hideOfflineWarning = function() {
-		// enable the live data
+    self.hideOfflineWarning = function() {
+        // enable the live data
         document.querySelector(".arrivals-list").classList.remove('loading')
         // remove the offline message
         document.getElementById("offline").remove();
         // load the live data
-	}
+    }
 
 });
