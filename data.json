@@ -1,0 +1,36 @@
+[{
+    "source": "Malta",
+    "destination": "Amsterdam",
+    "time": "8:45 AM",
+    "delay": false
+},
+{
+    "source": "Delhi",
+    "destination": "Mumbai",
+    "time": "8:15 AM",
+    "delay": false
+},
+{
+    "source": "Malta",
+    "destination": "London",
+    "time": "09:45 AM",
+    "delay": true
+},
+{
+    "source": "Paris",
+    "destination": "Madrid",
+    "time": "8:25 AM",
+    "delay": false
+},
+{
+    "source": "Malta",
+    "destination": "Paris",
+    "time": "12:35 PM",
+    "delay": true
+},
+{
+    "source": "Rome",
+    "destination": "Malta",
+    "time": "12:05 PM",
+    "delay": false
+}]

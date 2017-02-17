@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sky-High Airport Arrivals</title>
 
+    <link rel="icon" href="./launcher-icon-4x.png" type="image/png">
+
     <!-- App Manifest -->
     <link rel="manifest" href="./manifest.json">
 
@@ -32,7 +34,7 @@
     <!-- App controller js -->
     <script src="./controllers/appCtrl.js"></script>
     <!-- service worker -->
-    <script src="./serviceworker.js"></script>
+    <!-- <script src="./serviceworker.js"></script> -->
 
 </head>
 
@@ -58,9 +60,28 @@
         </div>
     </header>        
 
-    <!-- Content -->
-    <div class="col s12 flex-col flex-center-cross" id="content">
-        <div class="col s9 m7 tile tile-flight waves-effect">
+    <div class="col s12" id="content-wrapper">
+        <div class="flex-row flex-center-both" id="offline-warning">
+            <i class="material-icons">error</i>You are currently offline.
+        </div>
+
+        <!-- Content -->
+        <div class="col s12 flex-row flex-center-main" id="content">
+            <div class="tile tile-flight waves-effect flex-col flex-center-cross" ng-repeat="flight in vm.arrivals">
+                <div class="route-details flex-row flex-center-both">
+                    <span class="from"> {{ flight.source}} </span>
+                    <i class="material-icons">chevron_right</i>
+                    <span class="to">{{ flight.destination}}</span>
+                </div>
+                <hr>
+                <div class="time-details flex-row flex-center-both">
+                    <div class="time flex-row flex-center-both"> <i class="material-icons">schedule</i>{{ flight.time }}</div>
+                    <div class="flex-row flex-center-both">
+                        <i class="material-icons" ng-class="{ 'deep-orange-text text-darken-3': flight.delay, 'green-text' : !flight.delay}">{{ flight.delay ? "error_outline" : "check" }}</i>
+                        {{ flight.delay ? "Delayed" : "On time"}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

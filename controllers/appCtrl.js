@@ -10,47 +10,52 @@ app.controller('AppController', function($http) {
 
 	self.closeNavbar = function() {
 		self.navbarOpened = false;
-	}
-
-	/* Arrivals */
-	self.arrivals = [];
+    }
 
 
-	self.showOfflineWarning = function() {
-		// disable the live data
-        document.querySelector(".arrivals-list").classList.add('loading')
-            // load html template informing the user they are offline
-        var request = new XMLHttpRequest();
-        request.open('GET', './offline.html', true);
+    /* Arrivals */
+    self.arrivals = [
+    ];
 
-        request.onload = function() {
-            if (request.status === 200) {
-                // success
-                // create offline element with HTML loaded from offline.html template
-                var offlineMessageElement = document.createElement("div");
-                offlineMessageElement.setAttribute("id", "offline");
-                offlineMessageElement.innerHTML = request.responseText;
-                document.getElementById("main").appendChild(offlineMessageElement);
-            } else {
-                // error retrieving file
-                console.warn('Error retrieving offline.html');
-            }
-        };
 
-        request.onerror = function() {
-            // network errors
-            console.error('Connection error');
-        };
+    self.$content = $("#content");
+    /* offline helpers */
+    self.showOfflineWarning = function() {
+        // disable the live data
+        self.$content.addClass('loading');
+    }
 
-        request.send();
-	}
-
-	self.hideOfflineWarning = function() {
-		// enable the live data
-        document.querySelector(".arrivals-list").classList.remove('loading')
+    self.hideOfflineWarning = function() {
+        // enable the live data
+        self.$content.classList.removeClass('loading')
         // remove the offline message
         document.getElementById("offline").remove();
         // load the live data
-	}
+    }
+
+    var dataUrl = "data.json";
+    if( "caches" in window ) {
+        caches.match(dataUrl)
+              .then(function(response) {
+                  if(response) {
+                      console.log(response);
+                      response.json().then(function(data) {
+                          console.log(data);
+                      });
+                  }
+                  else {
+                      $http.get(dataUrl)
+                           .then(function(response) {
+                                    if(response) {
+                                        self.arrivals = response.data;
+                                    }
+                                },
+                                function(error) {
+                                  console.log(error);
+                               }
+                           ); 
+                  }
+        });
+    }
 
 });
