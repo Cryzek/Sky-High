@@ -5,11 +5,6 @@ var filesToCache = [
 	"./",
 	"./manifest.json",
     "./css/style.css",
-    "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js",
-    "https://code.jquery.com/jquery-3.1.1.min.js",
-    "https://fonts.googleapis.com/icon?family=Material+Icons",
-    "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css",
 	"./js/app.js",
 	"./controllers/appCtrl.js",
 	"./font/Pacifico.ttf"
@@ -27,7 +22,7 @@ self.addEventListener('install', function(e) {
 		            				/* self.skipWaiting() forces the waiting service worker to become active. */
 		                			self.skipWaiting();
         						});
-        })
+        	  })
     );
 });
 
@@ -46,7 +41,6 @@ self.addEventListener('activate', function(event) {
 			  })
 	);
 });
-
 
 /* Fetch event gets fired when the browser fetches a resource/url */
 self.addEventListener('fetch', function(event) {	
@@ -82,4 +76,5 @@ self.addEventListener('fetch', function(event) {
 				  })
 		)
 	}
+
 });

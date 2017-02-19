@@ -33,4 +33,10 @@
     "destination": "Malta",
     "time": "12:05 PM",
     "delay": false
+},
+{
+    "source": "London",
+    "destination": "Panaji",
+    "time": "01:05 PM",
+    "delay": false
 }]

@@ -33,29 +33,43 @@ app.controller('AppController', function($http) {
         // load the live data
     }
 
+    /* Register service workers */
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('./serviceworker.js')
+            .then(function() { 
+                console.log('[Service Worker] Registered'); 
+            });
+    }
+
     var dataUrl = "data.json";
     if( "caches" in window ) {
-        caches.match(dataUrl)
-              .then(function(response) {
-                  if(response) {
-                      console.log(response);
-                      response.json().then(function(data) {
-                          console.log(data);
-                      });
-                  }
-                  else {
-                      $http.get(dataUrl)
-                           .then(function(response) {
-                                    if(response) {
-                                        self.arrivals = response.data;
-                                    }
-                                },
-                                function(error) {
-                                  console.log(error);
-                               }
-                           ); 
-                  }
-        });
+        console.log("Cached data available.");
+        caches
+            .match(dataUrl)
+            .then(function(response) {
+                var r = response.clone();
+                if(response) {
+                    response.json().then(addData);
+                    function addData(data) {
+                        data.forEach(addToArrivals);
+                        function addToArrivals(val){
+                            self.arrivals.push(val);
+                        };
+                    };
+                }
+            });
     }
+        
+    $http.get(dataUrl).then(
+            function(response) {
+                if(response) {
+                    self.arrivals = response.data;
+                }
+            },
+            function(error) {
+                console.log(error);
+            }
+        ); 
 
 });
